@@ -1,0 +1,5 @@
+C:\DEV\MyMVVMPrismSample\SharedLib\bin\Debug\SharedLib.dll
+C:\DEV\MyMVVMPrismSample\SharedLib\bin\Debug\SharedLib.pdb
+C:\DEV\MyMVVMPrismSample\SharedLib\obj\Debug\SharedLib.csprojResolveAssemblyReference.cache
+C:\DEV\MyMVVMPrismSample\SharedLib\obj\Debug\SharedLib.dll
+C:\DEV\MyMVVMPrismSample\SharedLib\obj\Debug\SharedLib.pdb

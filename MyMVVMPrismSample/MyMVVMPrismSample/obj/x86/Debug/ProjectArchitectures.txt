@@ -1,0 +1,2 @@
+C:\DEV\MyMVVMPrismSample\MyMVVMPrismSample\MyMVVMPrismSample.csproj;x86
+C:\DEV\MyMVVMPrismSample\SharedLib\SharedLib.csproj;neutral

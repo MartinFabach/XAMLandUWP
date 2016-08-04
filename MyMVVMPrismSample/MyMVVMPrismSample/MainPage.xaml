@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="MyMVVMPrismSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyMVVMPrismSample"
+    xmlns:models="using:SharedLib.Models"
+    xmlns:converters="using:MyMVVMPrismSample.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:ObjectToObjectConverter x:Key="ObjectToObjectConverter" />
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <Button Content="{x:Bind ViewModel.Car, Mode=TwoWay, Converter={StaticResource ObjectToObjectConverter}}" Margin="20">
+                <Button.ContentTemplate>
+                    <DataTemplate x:DataType="models:Car">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Manufacturer, Mode=OneWay}" />
+                            <TextBlock Text="{x:Bind Model, Mode=OneWay}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <!-- NEW style for UWP using 'x:bind' -->
+            <ListBox ItemsSource="{x:Bind ViewModel.Cars}" SelectedItem="{x:Bind ViewModel.SelectedCar, Mode=TwoWay, Converter={StaticResource ObjectToObjectConverter }}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox Header="Manufacturer" Text="{x:Bind ViewModel.Car.Manufacturer, Mode=TwoWay}" Margin="5" />
+                <TextBox Header="Model" Text="{x:Bind ViewModel.Car.Model, Mode=TwoWay}" Margin="5" />
+                <Button Click="{x:Bind ViewModel.AddCar}" Content="add car via x:Bind" />
+                <Button Command="{Binding Path=AddCarCommand, Mode=OneTime}" Content="add car via WPF Binding" />
+                <Button Click="ButtonDeleteCar_Click" Content="delete car via EventAggregator" />
+            </StackPanel>
+            <!-- OLD Style for WPF using 'Binding' -->
+            <ListBox ItemsSource="{Binding Path=Cars}" SelectedItem="{Binding SelectedCar, Mode=TwoWay}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox Header="Manufacturer" Text="{Binding Car.Manufacturer, Mode=TwoWay}" Margin="5" />
+                <TextBox Header="Model NEW" Text="{Binding Car.Model, Mode=TwoWay}" Margin="5" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
